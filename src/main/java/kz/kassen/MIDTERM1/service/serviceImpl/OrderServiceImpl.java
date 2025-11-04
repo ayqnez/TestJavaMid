@@ -46,7 +46,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void addProductToUserOrder(Long productId, Long orderId) {
-        Product product = productRepo.findById(productId).orElse(null);
+        Product product = productRepo.findById(productId).orElseThrow();
         Order order = orderRepo.findById(orderId).orElseThrow();
 
         order.getProducts().add(product);
